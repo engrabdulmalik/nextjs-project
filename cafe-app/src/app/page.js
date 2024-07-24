@@ -5,13 +5,6 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-      </div>
-
       <div className={styles.center}>
         <Image
           className={styles.logo}
@@ -24,9 +17,7 @@ export default function Home() {
       </div>
 
       <p>
-        <Link href="/awesome">
-          awesome
-        </Link>
+        <Link href="/awesome">awesome</Link>
       </p>
     </main>
   );
