@@ -1,9 +1,7 @@
 import React from 'react'
 
-const AwesomePage = () => {
+export default function Page() {
   return (
     <div>page</div>
   )
 }
-
-export default AwesomePage
