@@ -1,4 +1,5 @@
 "use client";
+import style from "./link.module.css"
 import Link from "next/link";
 import logoImg from "@/assets/logo.png"; // Check this import path
 import Button from "react-bootstrap/Button";
@@ -16,7 +17,13 @@ const MainHeader = () => {
         <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
           <Container fluid>
             <Link href="/" className="navbar-brand">
-            <img src={logoImg.src} alt="Logo" width="50" height="50" className="d-inline-block align-text-top" />
+              <img
+                src={logoImg.src}
+                alt="Logo"
+                width="50"
+                height="50"
+                className="d-inline-block align-text-top"
+              />
             </Link>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -31,8 +38,16 @@ const MainHeader = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Home</Nav.Link>
-                  <Nav.Link href="#action2">Link</Nav.Link>
+                  <Link className={style.link} href="/">
+                    Home
+                  </Link>
+                  <Link className={style.link} href="/meals">
+                    Meals
+                  </Link>
+                  <Link className={style.link} href="/community">
+                    Community
+                  </Link>
+                  <Link className={style.link}  href="/meals/share">Share</Link>
                   <NavDropdown
                     title="Dropdown"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
