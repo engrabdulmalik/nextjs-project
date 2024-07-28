@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import logoImg from "@/assets/logo.png";
 import Container from 'react-bootstrap/Container';
