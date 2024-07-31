@@ -38,13 +38,17 @@ export default function Hero() {
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           {slides.map((slide, index) => (
-            <div key={slide.id} className="w-full h-full flex-shrink-0">
+            <div
+              key={slide.id}
+              className="relative w-full h-full flex-shrink-0"
+            >
               <Image
                 src={slide.image}
                 alt={slide.alt}
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 priority={index === 0} // Prioritize the first image for better LCP
+                sizes="(max-width: 768px) 100vw, (min-width: 769px) 50vw"
               />
             </div>
           ))}
