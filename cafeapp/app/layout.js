@@ -1,19 +1,21 @@
-
 import "./globals.css";
 import MainHeader from "@/components/main-header";
 
 export const metadata = {
-  title: "NextLevel Food",
+  title: "Hakuna Matata",
   description: "Delicious meals, shared by a food-loving community.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <MainHeader />
-        <div className="header-background">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <body className="relative min-h-screen overflow-hidden">
+        <div className="absolute inset-0 z-[-10]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320"
+            className="absolute inset-0 w-full h-auto"
+          >
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop
@@ -32,8 +34,8 @@ export default function RootLayout({ children }) {
             ></path>
           </svg>
         </div>
-
-        {children}
+        <MainHeader />
+        <main className="relative z-10">{children}</main>
       </body>
     </html>
   );
