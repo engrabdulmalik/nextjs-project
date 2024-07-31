@@ -1,6 +1,5 @@
 
 import "./globals.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import MainHeader from "@/components/main-header";
 
 export const metadata = {
