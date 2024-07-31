@@ -1,5 +1,6 @@
 "use client";
 import logoImg from "@/assets/logo.png";
+import Link from "next/link";
 import { useState } from "react";
 import {
   Dialog,
@@ -150,15 +151,15 @@ export default function MainHeader() {
             </PopoverPanel>
           </Popover>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Features
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Marketplace
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Company
-          </a>
+          <Link href="/meals" className="text-sm font-semibold leading-6 text-gray-900">
+            Meals
+          </Link>
+          <Link href="/meals/share" className="text-sm font-semibold leading-6 text-gray-900">
+            Share
+          </Link>
+          <Link href="/community" className="text-sm font-semibold leading-6 text-gray-900">
+            Community
+          </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
