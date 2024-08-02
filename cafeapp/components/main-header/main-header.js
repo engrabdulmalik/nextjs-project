@@ -174,26 +174,22 @@ export default function MainHeader() {
           </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-lg font-semibold leading-6 text-white">
+          <Link href="#" className="text-lg font-semibold leading-6 text-white">
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </nav>
       <Dialog
         open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
         className="lg:hidden"
       >
-        <div className="fixed inset-0 z-10" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div className="fixed inset-0 z-40 bg-black/50" />
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
-                alt=""
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
-              />
+              <img alt="" src={logoImg.src} className="h-8 w-auto" />
             </a>
             <button
               type="button"
@@ -204,7 +200,7 @@ export default function MainHeader() {
               <XMarkIcon aria-hidden="true" className="h-8 w-8" />
             </button>
           </div>
-          <div className="mt-6 flow-root">
+          <div className="mt-6">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <Disclosure as="div" className="-mx-3">
@@ -228,32 +224,34 @@ export default function MainHeader() {
                     ))}
                   </DisclosurePanel>
                 </Disclosure>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Features
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Marketplace
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Company
-                </a>
               </div>
               <div className="py-6">
-                <a
+                <Link
+                  href="/meals"
+                  className="block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Meals
+                </Link>
+                <Link
+                  href="/meals/share"
+                  className="block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Share
+                </Link>
+                <Link
+                  href="/community"
+                  className="block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Community
+                </Link>
+              </div>
+              <div className="py-6">
+                <Link
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
-                </a>
+                </Link>
               </div>
             </div>
           </div>
