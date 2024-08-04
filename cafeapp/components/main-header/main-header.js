@@ -97,7 +97,7 @@ export default function MainHeader() {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-          <Popover className="relative">
+          {/* <Popover className="relative">
             <PopoverButton className="flex items-center gap-x-2 text-lg font-semibold leading-7 text-white">
               Product
               <ChevronDownIcon
@@ -153,7 +153,7 @@ export default function MainHeader() {
                 ))}
               </div>
             </PopoverPanel>
-          </Popover>
+          </Popover> */}
 
           <NavLink href="/meals">Meals</NavLink>
           <NavLink href="/meals/share">Share</NavLink>
