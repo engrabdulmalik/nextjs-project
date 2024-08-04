@@ -1,35 +1,12 @@
-"use client"; // Ensure client-side rendering for dynamic content
 
-import { useEffect, useState } from "react";
 import MealsGrid from "../../components/meals/MealsGrid"; // Adjust path as needed
+import { getAllMeals } from "../../lib/meals";
 
-const mealsData = [
-  {
-    id: 1,
-    name: "Spaghetti Carbonara",
-    slug: "spaghetti-carbonara",
-    description: "Creamy pasta with pancetta and Parmesan.",
-    price: "$12.99",
-    image: "/assets/dumplings.jpg",
-  },
-  {
-    id: 2,
-    name: "Margherita Pizza",
-    slug: "margherita-pizza",
-    description: "Classic pizza with fresh basil and mozzarella.",
-    price: "$10.99",
-    image: "/assets/pizza.jpg",
-  },
-  // Add more meal items here
-];
 
-const MealsPage = () => {
-  const [meals, setMeals] = useState([]);
 
-  useEffect(() => {
-    // Here you can fetch the data from an API if needed
-    setMeals(mealsData);
-  }, []);
+
+export default async function MealsPage ()  {
+  const meals=await getAllMeals();
 
   return (
     <div className="bg-black min-h-screen text-white">
@@ -46,4 +23,4 @@ const MealsPage = () => {
   );
 };
 
-export default MealsPage;
+

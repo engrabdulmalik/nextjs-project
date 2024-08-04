@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import PropTypes from "prop-types";
 
 const NavLink = ({ href, children, className }) => {
   const pathname = usePathname();
@@ -17,14 +16,5 @@ const NavLink = ({ href, children, className }) => {
   );
 };
 
-NavLink.propTypes = {
-  href: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
-
-NavLink.defaultProps = {
-  className: "text-lg font-semibold leading-6",
-};
 
 export default NavLink;

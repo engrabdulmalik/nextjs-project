@@ -1,5 +1,3 @@
-// Update with your config settings.
-
 require("dotenv").config(); // Load environment variables
 
 /**

@@ -1,7 +1,8 @@
 // db.js
-const pgp = require("pg-promise")();
-require("dotenv").config();
+const knex = require("knex");
+const knexConfig = require("./knexfile");
 
-const db = pgp(process.env.DATABASE_URL);
+const environment = process.env.NODE_ENV || "development"; // Default to development
+const db = knex(knexConfig[environment]);
 
 module.exports = db;

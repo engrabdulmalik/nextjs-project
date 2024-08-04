@@ -7,14 +7,15 @@ const MealItem = ({ meal }) => {
     <div className="bg-gray-800 rounded-lg shadow-md overflow-hidden">
       <Image
         src={meal.image}
-        alt={meal.name}
+        alt={meal.title}
         width={500} // Specify the width of the image
         height={250} // Specify the height of the image
         className="w-full h-40 object-cover"
+        priority
       />
       <div className="p-4">
-        <h2 className="text-xl font-semibold">{meal.name}</h2>
-        <p className="text-gray-300">{meal.description}</p>
+        <h2 className="text-xl font-semibold">{meal.title}</h2>
+        <p className="text-gray-300">{meal.summary}</p>
         <p className="text-lg font-semibold mt-2">{meal.price}</p>
         <Link
           href={`/meals/${meal.slug}`} // Adjust path as needed
