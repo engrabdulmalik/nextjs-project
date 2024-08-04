@@ -1,7 +1,4 @@
 "use client";
-import { usePathname } from "next/navigation";
-import logoImg from "../../public/assets/logo.png";
-import Link from "next/link";
 import { useState } from "react";
 import {
   Dialog,
@@ -28,6 +25,9 @@ import {
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
+import logoImg from "../../public/assets/logo.png";
+import NavLink from "./nav-link"; 
+import Link from "next/link";
 
 const products = [
   {
@@ -69,12 +69,6 @@ const callsToAction = [
 
 export default function MainHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname(); // Get the current path
-
-  const getLinkClassName = (href) =>
-    `text-lg font-semibold leading-6 ${
-      pathname === href ? "text-yellow-400" : "text-white"
-    }`;
 
   return (
     <header className="bg-transparent">
@@ -161,23 +155,17 @@ export default function MainHeader() {
             </PopoverPanel>
           </Popover>
 
-          <Link href="/meals" className={getLinkClassName("/meals")}>
-            Meals
-          </Link>
-          <Link
-            href="/meals/share"
-            className={getLinkClassName("/meals/share")}
-          >
-            Share
-          </Link>
-          <Link href="/community" className={getLinkClassName("/community")}>
-            Community
-          </Link>
+          <NavLink href="/meals">Meals</NavLink>
+          <NavLink href="/meals/share">Share</NavLink>
+          <NavLink href="/community">Community</NavLink>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link href="#" className="text-lg font-semibold leading-6 text-white">
+          <NavLink
+            href="#"
+            className="text-lg font-semibold leading-6 text-white"
+          >
             Log in <span aria-hidden="true">&rarr;</span>
-          </Link>
+          </NavLink>
         </div>
       </nav>
       <Dialog
@@ -227,29 +215,17 @@ export default function MainHeader() {
                 </Disclosure>
               </div>
               <div className="py-6">
-                <Link href="/meals" className={getLinkClassName("/meals")}>
-                  Meals
-                </Link>
-                <Link
-                  href="/meals/share"
-                  className={getLinkClassName("/meals/share")}
-                >
-                  Share
-                </Link>
-                <Link
-                  href="/community"
-                  className={getLinkClassName("/community")}
-                >
-                  Community
-                </Link>
+                <NavLink href="/meals">Meals</NavLink>
+                <NavLink href="/meals/share">Share</NavLink>
+                <NavLink href="/community">Community</NavLink>
               </div>
               <div className="py-6">
-                <Link
+                <NavLink
                   href="#"
                   className="block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
-                </Link>
+                </NavLink>
               </div>
             </div>
           </div>
