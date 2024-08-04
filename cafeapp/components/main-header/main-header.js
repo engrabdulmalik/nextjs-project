@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from "next/navigation";
 import logoImg from "../../public/assets/logo.png";
 import Link from "next/link";
 import { useState } from "react";
@@ -68,6 +69,12 @@ const callsToAction = [
 
 export default function MainHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname(); // Get the current path
+
+  const getLinkClassName = (href) =>
+    `text-lg font-semibold leading-6 ${
+      pathname === href ? "text-yellow-400" : "text-white"
+    }`;
 
   return (
     <header className="bg-transparent">
@@ -154,22 +161,16 @@ export default function MainHeader() {
             </PopoverPanel>
           </Popover>
 
-          <Link
-            href="/meals"
-            className="text-lg font-semibold leading-6 text-white"
-          >
+          <Link href="/meals" className={getLinkClassName("/meals")}>
             Meals
           </Link>
           <Link
             href="/meals/share"
-            className="text-lg font-semibold leading-6 text-white"
+            className={getLinkClassName("/meals/share")}
           >
             Share
           </Link>
-          <Link
-            href="/community"
-            className="text-lg font-semibold leading-6 text-white"
-          >
+          <Link href="/community" className={getLinkClassName("/community")}>
             Community
           </Link>
         </PopoverGroup>
@@ -226,21 +227,18 @@ export default function MainHeader() {
                 </Disclosure>
               </div>
               <div className="py-6">
-                <Link
-                  href="/meals"
-                  className="block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
+                <Link href="/meals" className={getLinkClassName("/meals")}>
                   Meals
                 </Link>
                 <Link
                   href="/meals/share"
-                  className="block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className={getLinkClassName("/meals/share")}
                 >
                   Share
                 </Link>
                 <Link
                   href="/community"
-                  className="block rounded-lg px-3 py-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className={getLinkClassName("/community")}
                 >
                   Community
                 </Link>
