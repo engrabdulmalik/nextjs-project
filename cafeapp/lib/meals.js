@@ -4,6 +4,12 @@ const db = require("../db");
 // Fetch all meals
 const getAllMeals = async () => {
   try {
+    await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+      }, 1000); // Simulate a delay of 1 second for demonstration purposes
+    });
+
     const meals = await db("meals").select("*");
     return meals;
   } catch (error) {
