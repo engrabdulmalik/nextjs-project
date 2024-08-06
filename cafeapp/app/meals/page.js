@@ -1,10 +1,13 @@
+import { Suspense } from "react";
 import MealsGrid from "../../components/meals/MealsGrid"; // Adjust path as needed
 import { getAllMeals } from "../../lib/meals";
 import Link from "next/link";
 
-export default async function MealsPage() {
+async function Meals() {
   const meals = await getAllMeals();
-
+  return <MealsGrid meals={meals} />;
+}
+export default function MealsPage() {
   return (
     <div className="bg-black min-h-screen text-white">
       <main className="p-6 lg:px-8">
@@ -21,7 +24,15 @@ export default async function MealsPage() {
             </button>
           </Link>
         </div>
-        <MealsGrid meals={meals} />
+        <Suspense
+          fallback={
+            <div className="flex justify-center items-center h-screen">
+              <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white"></div>
+            </div>
+          }
+        >
+          <Meals />
+        </Suspense>
       </main>
       <footer className="bg-gray-900 text-white text-center py-4">
         <p>&copy; 2024 Hakuna Matata Cafe. All rights reserved.</p>
