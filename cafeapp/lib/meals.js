@@ -9,11 +9,11 @@ const getAllMeals = async () => {
         resolve();
       }, 1000); // Simulate a delay of 1 second for demonstration purposes
     });
-
+   
     const meals = await db("meals").select("*");
     return meals;
   } catch (error) {
-    console.error("Error fetching meals:", error);
+   
     throw error;
   }
 };
