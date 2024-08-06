@@ -30,6 +30,7 @@ exports.seed = async function (knex) {
     `,
           creator: "John Doe",
           creator_email: "johndoe@example.com",
+          price: 10.99,
         },
         {
           title: "Spicy Curry",
@@ -55,6 +56,7 @@ exports.seed = async function (knex) {
     `,
           creator: "Max Schwarz",
           creator_email: "max@example.com",
+          price: 12.99,
         },
         {
           title: "Homemade Dumplings",
@@ -77,6 +79,7 @@ exports.seed = async function (knex) {
     `,
           creator: "Emily Chen",
           creator_email: "emilychen@example.com",
+          price: 8.99,
         },
         {
           title: "Classic Mac n Cheese",
@@ -102,6 +105,7 @@ exports.seed = async function (knex) {
     `,
           creator: "Laura Smith",
           creator_email: "laurasmith@example.com",
+          price: 9.99,
         },
         {
           title: "Authentic Pizza",
@@ -124,6 +128,7 @@ exports.seed = async function (knex) {
     `,
           creator: "Mario Rossi",
           creator_email: "mariorossi@example.com",
+          price: 14.99,
         },
         {
           title: "Wiener Schnitzel",
@@ -146,6 +151,7 @@ exports.seed = async function (knex) {
  `,
           creator: "Franz Huber",
           creator_email: "franzhuber@example.com",
+          price: 12.99,
         },
         {
           title: "Fresh Tomato Salad",
@@ -168,6 +174,7 @@ exports.seed = async function (knex) {
     `,
           creator: "Sophia Green",
           creator_email: "sophiagreen@example.com",
+          price: 7.99,
         },
         // Add more meals as needed
       ]);
