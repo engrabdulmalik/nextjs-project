@@ -9,7 +9,6 @@ export async function generateMetadata({ params }) {
 
 export default async function MealDetails({ params }) {
   const meal = await getMealBySlug(params.slug);
-
   if (!meal) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-black text-white">
@@ -17,6 +16,9 @@ export default async function MealDetails({ params }) {
       </div>
     );
   }
+
+  // Convert newlines to <br /> tags
+  const formattedInstructions = meal.instructions.replace(/\n/g, "<br />");
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-black text-white p-8">
@@ -31,7 +33,10 @@ export default async function MealDetails({ params }) {
             <h1 className="text-4xl font-bold mb-4">{meal.title}</h1>
             <p className="text-lg mb-4">{meal.summary}</p>
             <h2 className="text-2xl font-semibold mb-2">Instructions:</h2>
-            <p className="list-disc list-inside mb-4">{meal.instructions}</p>
+            <p
+              className="list-disc list-inside mb-4"
+              dangerouslySetInnerHTML={{ __html: formattedInstructions }}
+            />
             <p className="text-lg font-semibold">
               Created by: {meal.creator} ({meal.creator_email})
             </p>
