@@ -1,7 +1,9 @@
 import ImageUpload from "@/components/meals/image-upload";
 import { shareMeal } from "@/lib/actions";
 
+
 const ShareMealPage = () => {
+
   return (
     <div className="flex flex-col items-center min-h-screen bg-black p-8">
       <h1 className="text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#ff80b5] to-[#9089fc] sm:text-6xl">

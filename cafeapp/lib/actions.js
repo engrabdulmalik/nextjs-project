@@ -1,5 +1,6 @@
 "use server";
-
+import { redirect } from "next/dist/server/api-utils";
+import { saveMeal } from "./meals";
 export async function shareMeal (formData) {
 
 
@@ -14,7 +15,9 @@ export async function shareMeal (formData) {
     image: formData.get("image"),
   };
 
- console.log(meal)
+  // Save the meal to your database
+  await saveMeal(meal);
+  redirect('/meals');
 
   // Here you would typically send `formData` to your server
 };
