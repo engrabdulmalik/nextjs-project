@@ -6,7 +6,6 @@ export async function shareMeal (formData) {
   // Create the meal object from FormData
   const meal = {
     title: formData.get("title"),
-    slug: formData.get("slug"),
     summary: formData.get("summary"),
     instructions: formData.get("instructions"),
     creator: formData.get("creator"),

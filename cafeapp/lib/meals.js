@@ -1,4 +1,7 @@
 // meals.js
+import slugify from "slugify";
+import xss from "xss";
+import fs from "node:fs";
 const db = require("../db");
 
 // Fetch all meals
@@ -39,6 +42,18 @@ const getMealBySlug = async (slug) => {
     throw error;
   }
 };
+
+export async function saveMeal(meal) {
+  const slug = slugify(meal.title, { lower: true });
+  meal.slug = slug;
+  meal.instructions = xss(meal.instructions);
+  const extension = meal.image.name.split(".").pop();
+  meal.image = `${slug}.${extension}`;
+  const stream = fs.createWriteStream(`public/images/${meal.image}`);
+  const bufferedImage =await meal.image.arrayBuffer();
+  stream.write(Buffer.from(bufferedImage));
+  return db("meals").insert(meal);
+}
 
 module.exports = {
   getAllMeals,

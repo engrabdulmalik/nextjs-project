@@ -28,7 +28,7 @@ const ShareMealPage = () => {
               required
             />
           </div>
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label
               htmlFor="slug"
               className="block font-semibold mb-2 text-gradient"
@@ -42,7 +42,7 @@ const ShareMealPage = () => {
               className="w-full p-3 border border-gray-300 rounded-lg text-black"
               required
             />
-          </div>
+          </div> */}
           <div className="mb-4 col-span-1">
             <label
               htmlFor="summary"
