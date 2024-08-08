@@ -16,7 +16,7 @@ const MealItem = ({ meal }) => {
       <div className="p-4 flex flex-col flex-grow">
         <h2 className="text-xl font-semibold">{meal.title}</h2>
         <p className="text-gray-300 flex-grow">{meal.summary}</p>
-        <p className="text-lg font-semibold mt-2">{meal.price}</p>
+        <p className="text-lg font-semibold mt-2">$ {meal.price}</p>
         <div className="mt-4">
           <Link
             href={`/meals/${meal.slug}`} // Adjust path as needed
