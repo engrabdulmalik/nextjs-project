@@ -43,32 +43,32 @@ export const getMealBySlug = async (slug) => {
 };
 
 export async function saveMeal(meal) {
-    let slug = slugify(meal.title, { lower: true });
+    const slug = slugify(meal.title, { lower: true });
 
     // Check if a meal with the same slug already exists
-    let existingMeal = await db("meals").where({ slug }).first();
+    // let existingMeal = await db("meals").where({ slug }).first();
 
-    // If a meal with the same slug exists, generate a unique slug
-    if (existingMeal) {
-      let counter = 1;
-      let newSlug = `${slug}-${counter}`;
-      while (existingMeal) {
-        existingMeal = await db("meals").where({ slug: newSlug }).first();
-        if (!existingMeal) {
-          slug = newSlug;
-          break;
-        }
-        counter++;
-        newSlug = `${slug}-${counter}`;
-      }
-    }
+    // // If a meal with the same slug exists, generate a unique slug
+    // if (existingMeal) {
+    //   let counter = 1;
+    //   let newSlug = `${slug}-${counter}`;
+    //   while (existingMeal) {
+    //     existingMeal = await db("meals").where({ slug: newSlug }).first();
+    //     if (!existingMeal) {
+    //       slug = newSlug;
+    //       break;
+    //     }
+    //     counter++;
+    //     newSlug = `${slug}-${counter}`;
+    //   }
+    // }
 
     meal.slug = slug;
     meal.instructions = xss(meal.instructions);
  
 
   const extension = meal.image.name.split(".").pop();
-  const fileName = `${meal.slug}.${extension}`;
+  const fileName = `${slug}.${extension}`;
 
   const stream = fs.createWriteStream(`public/assets/${fileName}`);
   const bufferedImage = await meal.image.arrayBuffer();
