@@ -1,45 +1,14 @@
-
-import React, { useRef } from "react";
 import ImageUpload from "@/components/meals/image-upload";
+import { shareMeal } from "@/lib/actions";
 
 const ShareMealPage = () => {
-  const imageUploadRef = useRef();
-
-  const shareMeal = async (event) => {
-    event.preventDefault(); // Prevent default form submission
-
-    const formData = new FormData(event.target);
-
-    // Append image file if available
-    const imageFile = imageUploadRef.current.getImage();
-    if (imageFile) {
-      formData.append("image", imageFile);
-    }
-
-    // Create the meal object from FormData
-    const meal = {
-      title: formData.get("title"),
-      slug: formData.get("slug"),
-      summary: formData.get("summary"),
-      instructions: formData.get("instructions"),
-      creator: formData.get("creator"),
-      creator_email: formData.get("creator_email"),
-      price: formData.get("price"),
-      image: formData.get("image"),
-    };
-
-    console.log(meal);
-
-    // Here you would typically send `formData` to your server
-  };
-
   return (
     <div className="flex flex-col items-center min-h-screen bg-black p-8">
       <h1 className="text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#ff80b5] to-[#9089fc] sm:text-6xl">
         Share Your Meal
       </h1>
       <form
-        onSubmit={shareMeal}
+        action={shareMeal}
         className="w-full max-w-5xl bg-gradient-to-r from-[#ff80b5] to-[#9089fc] p-8 rounded-lg shadow-lg text-white"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -150,7 +119,7 @@ const ShareMealPage = () => {
               required
             />
           </div>
-          <ImageUpload ref={imageUploadRef} />
+          <ImageUpload name={"image"} />
         </div>
         <button
           type="submit"

@@ -1,53 +1,58 @@
-// components/ImageUpload.js
-// "use client";
-// import React, { useState, forwardRef, useImperativeHandle } from "react";
+"use client";
+import React, { useState, useRef } from "react";
 
-// const ImageUpload = forwardRef((props, ref) => {
-//   const [mealImage, setMealImage] = useState(null);
+export default function ImageUpload({ label, name }) {
+  const [image, setImage] = useState(null);
+ 
+  const fileInputRef = useRef(null);
 
-//   useImperativeHandle(ref, () => ({
-//     getImage: () => mealImage,
-//   }));
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) {
+     return;
+    }
 
-//   const handleImageChange = (e) => {
-//     if (e.target.files[0]) {
-//       setMealImage(e.target.files[0]);
-//     }
-//   };
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
 
-//   return (
-//     <div className="mb-4 col-span-1">
-//       <label htmlFor="image" className="block font-semibold mb-2 text-gradient">
-//         Upload Image
-//       </label>
-//       <input
-//         id="image"
-//         name="image"
-//         type="file"
-//         accept="image/*"
-//         onChange={handleImageChange}
-//         className="w-full p-2.5 border border-gray-300 rounded-lg bg-white"
-//       />
-//     </div>
-//   );
-// });
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
-// export default ImageUpload;
-
-export default function ImageUpload({label}) {
   return (
     <div className="mb-4 col-span-1">
-      <label htmlFor="image" className="block font-semibold mb-2 text-gradient">
-        {label}
-      </label>
+      <label className="block font-semibold mb-2 text-gradient">{label}</label>
+      <button
+        type="button"
+        onClick={handleButtonClick}
+        className="w-full p-3 border border-transparent rounded-lg bg-gradient-to-r from-[#9b4dca] to-[#f782c3] text-white font-semibold hover:from-[#f782c3] hover:to-[#9b4dca] transition-colors duration-300"
+      >
+        Choose Image
+      </button>
       <input
-        id="image"
-        name="image"
+        ref={fileInputRef}
+        id={name}
+        name={name}
         type="file"
         accept="image/*"
         onChange={handleImageChange}
-        className="w-full p-2.5 border border-gray-300 rounded-lg bg-white"
+        className="hidden"
       />
+      {image && (
+        <div className="mt-4 flex justify-center">
+          <img
+            src={image}
+            alt="Selected"
+            className="w-32 h-32 object-cover border border-gray-300 rounded-lg"
+          />
+        </div>
+      )}
     </div>
   );
 }
