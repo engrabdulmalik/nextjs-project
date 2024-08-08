@@ -51,7 +51,13 @@ export async function saveMeal(meal) {
   meal.image = `${slug}.${extension}`;
   const stream = fs.createWriteStream(`public/images/${meal.image}`);
   const bufferedImage =await meal.image.arrayBuffer();
-  stream.write(Buffer.from(bufferedImage));
+  stream.write(Buffer.from(bufferedImage), (error) => {
+    if (error) {
+      throw new Error('Error saving image');
+    }
+    });
+
+  meal.image = `images/${meal.image}`;
   return db("meals").insert(meal);
 }
 
