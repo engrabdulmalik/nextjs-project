@@ -1,9 +1,22 @@
 
+import React, { useRef } from "react";
 import ImageUpload from "@/components/meals/image-upload";
 
 const ShareMealPage = () => {
-  async function shareMeal(formData) {
-    "use server";
+  const imageUploadRef = useRef();
+
+  const shareMeal = async (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData(event.target);
+
+    // Append image file if available
+    const imageFile = imageUploadRef.current.getImage();
+    if (imageFile) {
+      formData.append("image", imageFile);
+    }
+
+    // Create the meal object from FormData
     const meal = {
       title: formData.get("title"),
       slug: formData.get("slug"),
@@ -16,7 +29,9 @@ const ShareMealPage = () => {
     };
 
     console.log(meal);
-  }
+
+    // Here you would typically send `formData` to your server
+  };
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-black p-8">
@@ -24,7 +39,7 @@ const ShareMealPage = () => {
         Share Your Meal
       </h1>
       <form
-        action={shareMeal}
+        onSubmit={shareMeal}
         className="w-full max-w-5xl bg-gradient-to-r from-[#ff80b5] to-[#9089fc] p-8 rounded-lg shadow-lg text-white"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -38,6 +53,7 @@ const ShareMealPage = () => {
             </label>
             <input
               id="title"
+              name="title"
               type="text"
               className="w-full p-3 border border-gray-300 rounded-lg text-black"
               required
@@ -52,6 +68,7 @@ const ShareMealPage = () => {
             </label>
             <input
               id="slug"
+              name="slug"
               type="text"
               className="w-full p-3 border border-gray-300 rounded-lg text-black"
               required
@@ -66,6 +83,7 @@ const ShareMealPage = () => {
             </label>
             <textarea
               id="summary"
+              name="summary"
               className="w-full p-3 border border-gray-300 rounded-lg text-black resize-none"
               rows="5"
               required
@@ -80,6 +98,7 @@ const ShareMealPage = () => {
             </label>
             <textarea
               id="instructions"
+              name="instructions"
               className="w-full p-3 border border-gray-300 rounded-lg text-black resize-none"
               rows="5"
               required
@@ -94,6 +113,7 @@ const ShareMealPage = () => {
             </label>
             <input
               id="creator"
+              name="creator"
               type="text"
               className="w-full p-3 border border-gray-300 rounded-lg text-black"
               required
@@ -108,6 +128,7 @@ const ShareMealPage = () => {
             </label>
             <input
               id="creator_email"
+              name="creator_email"
               type="email"
               className="w-full p-3 border border-gray-300 rounded-lg text-black"
               required
@@ -122,13 +143,14 @@ const ShareMealPage = () => {
             </label>
             <input
               id="price"
+              name="price"
               type="number"
               className="w-full p-3 border border-gray-300 rounded-lg text-black"
               step="0.01"
               required
             />
           </div>
-          <ImageUpload />
+          <ImageUpload ref={imageUploadRef} />
         </div>
         <button
           type="submit"
