@@ -1,9 +1,8 @@
 import ImageUpload from "@/components/meals/image-upload";
 import { shareMeal } from "@/lib/actions";
-
+import MealsFormSubmit from "@/components/meals/meals-form-submit";
 
 const ShareMealPage = () => {
-
   return (
     <div className="flex flex-col items-center min-h-screen bg-black p-8">
       <h1 className="text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#ff80b5] to-[#9089fc] sm:text-6xl">
@@ -25,6 +24,21 @@ const ShareMealPage = () => {
             <input
               id="title"
               name="title"
+              type="text"
+              className="w-full p-3 border border-gray-300 rounded-lg text-black"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="creator"
+              className="block font-semibold mb-2 text-gradient"
+            >
+              Creator Name
+            </label>
+            <input
+              id="creator"
+              name="creator"
               type="text"
               className="w-full p-3 border border-gray-300 rounded-lg text-black"
               required
@@ -75,21 +89,7 @@ const ShareMealPage = () => {
               required
             />
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="creator"
-              className="block font-semibold mb-2 text-gradient"
-            >
-              Creator Name
-            </label>
-            <input
-              id="creator"
-              name="creator"
-              type="text"
-              className="w-full p-3 border border-gray-300 rounded-lg text-black"
-              required
-            />
-          </div>
+
           <div className="mb-4">
             <label
               htmlFor="creator_email"
@@ -121,14 +121,9 @@ const ShareMealPage = () => {
               required
             />
           </div>
-          <ImageUpload name={"image"} />
-        </div>
-        <button
-          type="submit"
-          className="w-full p-3 rounded-lg text-white bg-gradient-to-r from-[#9b59b6] to-[#3498db] shadow-md hover:from-[#3498db] hover:to-[#9b59b6] transition-colors duration-300 transform hover:scale-105"
-        >
-          Share Meal
-        </button>
+        </div>{" "}
+        <ImageUpload name={"image"} />
+        <MealsFormSubmit />
       </form>
     </div>
   );
