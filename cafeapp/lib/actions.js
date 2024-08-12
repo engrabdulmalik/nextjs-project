@@ -11,11 +11,11 @@ const mealSchema = yup.object().shape({
     .required("Title is required"),
   summary: yup
     .string()
-    .min(10, "Summary must be at least 10 characters long")
+    .min(4, "Summary must be at least 10 characters long")
     .required("Summary is required"),
   instructions: yup
     .string()
-    .min(10, "Instructions must be at least 10 characters long")
+    .min(4, "Instructions must be at least 10 characters long")
     .required("Instructions are required"),
   creator: yup.string().required("Creator is required"),
   creator_email: yup
@@ -30,6 +30,7 @@ const mealSchema = yup.object().shape({
 });
 
 export async function shareMeal(formData) {
+  console.log("formData", formData);
   // Create the meal object from FormData
   const meal = {
     title: formData.get("title"),
