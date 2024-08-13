@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
 
 export async function shareMeal(formData) {
+  // Handle form data submission
+
   const meal = {
     title: formData.get("title"),
     summary: formData.get("summary"),
@@ -16,10 +18,9 @@ export async function shareMeal(formData) {
   try {
     await saveMeal(meal); // Ensure saveMeal is complete
 
-    redirect("/meals");
+    redirect("/meals"); // Perform server-side redirection
   } catch (err) {
     console.error("Error saving meal:", err); // Log the error for debugging
-    // Handle errors appropriately, e.g., return error message
-    return { errors: err.errors };
+    // Handle errors appropriately, e.g., display an error message to the user
   }
 }
