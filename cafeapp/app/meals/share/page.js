@@ -1,3 +1,4 @@
+"use client";
 import ImageUpload from "@/components/meals/image-upload";
 import { shareMeal } from "@/lib/actions";
 import MealsFormSubmit from "@/components/meals/meals-form-submit";
@@ -13,7 +14,6 @@ const ShareMealPage = () => {
         className="w-full max-w-5xl bg-gradient-to-r from-[#ff80b5] to-[#9089fc] p-8 rounded-lg shadow-lg text-white"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Column 1 */}
           <div className="mb-4">
             <label
               htmlFor="title"
