@@ -3,8 +3,6 @@ import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
 
 export async function shareMeal(formData) {
-  // Handle form data submission
-
   const meal = {
     title: formData.get("title"),
     summary: formData.get("summary"),
@@ -16,11 +14,23 @@ export async function shareMeal(formData) {
   };
 
   try {
-    await saveMeal(meal); // Ensure saveMeal is complete
+    const result = await saveMeal(meal);
 
-    redirect("/meals"); // Perform server-side redirection
+    if (result.rowCount === 1) {
+      // Server-side redirection after successful save
+      redirect("/meals");
+    } else {
+      console.error("Failed to save meal: No rows affected");
+      return {
+        status: 500,
+        body: "Failed to save meal: No rows affected",
+      };
+    }
   } catch (err) {
-    console.error("Error saving meal:", err); // Log the error for debugging
-    // Handle errors appropriately, e.g., display an error message to the user
+    console.error("Error saving meal:", err);
+    return {
+      status: 500,
+      body: "Error saving meal",
+    };
   }
 }
