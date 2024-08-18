@@ -31,9 +31,12 @@ export const getMealById = async (id) => {
   }
 };
 
+
+
 // Fetch a meal by slug
 export const getMealBySlug = async (slug) => {
   try {
+       console.log("Fetching meal with slug:", slug);
     const meal = await db("meals").where({ slug }).first();
     return meal;
   } catch (error) {
